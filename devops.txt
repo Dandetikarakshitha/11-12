@@ -1,0 +1,64 @@
+package test;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class JSTest {
+    public static void main(String[] args) {
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\ADMIN\\OneDrive\\Desktop\\selenium\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("file:///C:/Users/ADMIN/eclipse-workspace/test/simple.html");
+
+        Alert alert = driver.switchTo().alert();
+        String alertText = alert.getText();
+        System.out.println("Alert says: " + alertText);
+
+        alert.accept();
+        driver.quit();
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple JS Program</title>
+  <script>
+    const a = 5;
+    const b = 3;
+    const sum = a + b;
+    alert("The sum of " + a + " and " + b + " is " + sum);
+  </script>
+</head>
+<body></body>
+</html>
+
+package simple;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Test {
+    public static void main(String[] args) {
+        // Set the path to the ChromeDriver executable
+        System.setProperty("webdriver.chrome.driver", 
+            "C:\\chromedriver.exe");
+
+        // Initialize WebDriver
+        WebDriver driver = new ChromeDriver();
+
+        // Navigate to the desired URL
+        driver.get("http://www.chrome.com");
+
+        // Execute JavaScript and capture the returned message
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        String message = (String) js.executeScript("return 'Hello from javascript!';");
+
+        // Print the message to the console
+        System.out.println(message);
+
+        // Close the browser
+        driver.quit();
+    }
+}
